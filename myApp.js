@@ -1,7 +1,10 @@
 require('dotenv').config();
 
-
 let Person;
+
+//Install and Set Up Mongoose
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
