@@ -13,7 +13,7 @@ let personSchema = mongoose.Schema({
   favoriteFoods : {type: [String]}
 })
 
-const Person = mongoose.model('person',personSchema)
+const Person = mongoose.model('Person',personSchema)
 
 //Install and Set Up Mongoose
 
