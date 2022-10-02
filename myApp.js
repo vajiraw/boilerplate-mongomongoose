@@ -1,14 +1,25 @@
+const { type } = require('express/lib/response');
 let mongoose =  require('mongoose')
 require('dotenv').config();
 
-
-let Person;
-
-//Install and Set Up Mongoose
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
+let personSchema = mongoose.Schema({
+  name : {type:String,required: true},
+  age : {type:Number},
+  favoriteFoods : {type: [String]}
+})
+
+const Person = mongoose.model('person',personSchema)
+
+//Install and Set Up Mongoose
+
+
+
 const createAndSavePerson = (done) => { 
+  let person = new Person({name:'John Doe', age:45,favoriteFoods:['Soya meat']})
+  person.create();
   done(null /*, data*/);
 };
 
