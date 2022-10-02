@@ -20,8 +20,8 @@ const Person = mongoose.model('person',personSchema)
 
 
 const createAndSavePerson = (done) => { 
-  let Person = new Person({name:'John Doe', age:45,favoriteFoods:['Soya meat']})
-  Person.save((err,data)=>{
+  let john = new Person({name:'John Doe', age:45,favoriteFoods:['Soya meat']})
+  john.save((err,data)=>{
     if (err) return console.error(err);
     done(null, data);
   })  
