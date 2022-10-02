@@ -16,7 +16,9 @@ let personSchema = mongoose.Schema({
 const Person = mongoose.model('Person',personSchema)
 
 //Install and Set Up Mongoose
-
+let john = new Person({name:'John Doe', age:45,favoriteFoods:['Soya meat']})
+let soda = new Person({name:'John Hing', age:45,favoriteFoods:['Pizza','Buger']})
+arrayOfPeople = [john,soda]
 
 
 const createAndSavePerson = (done) => { 
@@ -28,9 +30,7 @@ const createAndSavePerson = (done) => {
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
-  let john = new Person({name:'John Doe', age:45,favoriteFoods:['Soya meat']})
-  let soda = new Person({name:'John Hing', age:45,favoriteFoods:['Pizza','Buger']})
-  arrayOfPeople = [john,soda]
+  
   Person.create(arrayOfPeople, (err, data) => {
     if(err) {
        done(err); 
