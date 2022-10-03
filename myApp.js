@@ -17,8 +17,9 @@ const Person = mongoose.model('Person',personSchema)
 
 //Install and Set Up Mongoose
 let john = new Person({name:'John Doe', age:45,favoriteFoods:['Soya meat']})
-let soda = new Person({name:'John Hing', age:45,favoriteFoods:['Pizza','Buger']})
-arrayOfPeople = [john,soda]
+let soda = new Person({name:'John Hing', age:46,favoriteFoods:['Pizza','Buger']})
+let burri = new Person({name:'John Hops', age:47,favoriteFoods:['Pizza','Buger','burrito']})
+arrayOfPeople = [john,soda,burri]
 
 
 const createAndSavePerson = (done) => { 
@@ -103,10 +104,13 @@ const removeManyPeople = (done) => {
   }  
 
 
+
 const queryChain = (done) => {
   const foodToSearch = "burrito";
-
-  done(null /*, data*/);
+  Person.find({favoriteFoods:foodToSearch}.sort().limit(2).select({age:0}).exec(),(err,data)=>{
+    if(err) console.log(err);
+    done(null ,data);
+  }) 
 };
 
 /** **Well Done !!**
